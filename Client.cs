@@ -3,100 +3,182 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
-namespace Handson
+namespace Freechat_App
 {
     public class Client
     {
-        public Client()
+        #region Registration Method
+        public void registration()
         {
+            string name = Console.ReadLine();
+            long ph = long.Parse(Console.ReadLine());
         }
-        public string Name { get; set; }
-        public long Phone { get; set; }
+        #endregion
+
+        #region Messaging
+        public void SendMessage()
+        {
+            Console.WriteLine("Type here....");
+            string msg = Console.ReadLine();
+            Console.WriteLine("Message stored in server");
+        }
+        #endregion
     }
+
     public class contact_list
     {
-        List<string> contacts = new List<string>();
+
+        List<string> chi = new List<string>();
         string a = "Akhil";
-        string b = "Nikhil";
+        string b = "Akash";
         string c = "Lokesh";
-        string d = "Prudvi";
+        string d = "Prudhvi";
+
+        #region Removing Participants Methods
         public void list()
         {
-            contacts.Add(a);
-            contacts.Add(b);
-            contacts.Add(c);
-            contacts.Add(d);
-            foreach(string st in contacts)
+            chi.Add(a);
+            chi.Add(b);
+            chi.Add(c);
+            chi.Add(d);
+            foreach (string st in chi)
             {
                 Console.WriteLine(st);
             }
-            Console.ReadLine();
+
+
+
         }
         public void RemoveParticipant_Akhil()
         {
-            contacts.Remove(a);
-            foreach(string st in contacts)
+            chi.Remove(a);
+            foreach (string st in chi)
             {
                 Console.WriteLine(st);
             }
             Console.ReadLine();
+
         }
-        public void RemoveParticipant_Nikhil()
+        public void RemoveParticipant_Akash()
         {
-            contacts.Remove(a);
-            foreach (string st in contacts)
+            chi.Remove(b);
+
+            foreach (string st in chi)
             {
                 Console.WriteLine(st);
             }
             Console.ReadLine();
+
         }
         public void RemoveParticipant_Lokesh()
         {
-            contacts.Remove(a);
-            foreach (string st in contacts)
+            chi.Remove(c);
+            foreach (string st in chi)
             {
                 Console.WriteLine(st);
             }
             Console.ReadLine();
+
         }
-        public void RemoveParticipant_Prudvi()
+        public void RemoveParticipant_Prudhvi()
         {
-            contacts.Remove(a);
-            foreach (string st in contacts)
+            chi.Remove(d);
+            foreach (string st in chi)
             {
                 Console.WriteLine(st);
             }
             Console.ReadLine();
+
         }
 
-        public void group()
+    }
+
+    public class remove
+    {
+        public void removing()
         {
-            contacts.Remove(a);
+
+
+            contact_list l = new contact_list();
+            l.list();
+            Console.WriteLine("Enter a to remove Akhil");
+            Console.WriteLine("Enter b to remove Akash");
+            Console.WriteLine("Enter c to remove Lokesh");
+            Console.WriteLine("Enter d to remove Prudhvi");
+            char input = char.Parse(Console.ReadLine());
+            string s = input.ToString().ToLower();
+            switch (s)
+            {
+                case "a":
+                    l.RemoveParticipant_Akhil();
+                    break;
+                case "b":
+                    l.RemoveParticipant_Akash();
+                    break;
+                case "c":
+                    l.RemoveParticipant_Lokesh();
+                    break;
+                case "d":
+                    l.RemoveParticipant_Prudhvi();
+                    break;
+            }
+            Console.WriteLine("contact List after removing participant");
+            l.list();
         }
     }
+
+    #endregion
+
 }
+
+
+
+
+
+
+
+
+
+
 public class Options
 {
-    List<string> con = new List<string>();
-    public void Add()
-    {
-        Console.WriteLine("Create new contact or Add to existing contacts?");
 
-        string n1 = Console.ReadLine();
-        con.Add(n1);
-        Console.WriteLine(con);
+    #region Options methods
+    public void Mute()
+    {
+        Console.WriteLine("This chat is temporarily muted for 8 hrs..");
+
         Console.Read();
+
+
     }
     public void view()
     {
-        Console.WriteLine("Hi.. Namaste.. Hello.. Gudmrng ..Heyy Wassupp...........");
+        Console.WriteLine("I think you are trying to view this msg..Wait a sec and try other options too.");
         Console.Read();
+
     }
-    public void edit()
+    public void block()
     {
+        Console.WriteLine("You will no longer receive msgs from this contact.. ");
+
+
     }
-    public void delete()
+    public void deleteChat()
     {
+        Console.WriteLine("Are you sure to delete this contact?");
+        Console.WriteLine("Type 'yes' to delete");
+
+        string ch = Console.ReadLine();
+        if (ch == "yes")
+        {
+            Console.WriteLine("Deleting Chat");
+        }
+
     }
+    #endregion
+
 }
+
